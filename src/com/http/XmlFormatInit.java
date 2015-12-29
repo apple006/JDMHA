@@ -48,6 +48,7 @@ public class XmlFormatInit extends ContextLoaderListener{
 		 * 资源解析：
 		 * 资源注入
 		 */
+		
 	}
 
 	public static ApplicationContext getContext() {
