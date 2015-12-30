@@ -30,5 +30,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-websocket-4.1.4.RELEASE.jar"/>
 	<classpathentry kind="lib" path="H:/Program Files (x86)/apache-tomcat-7.0.55/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
