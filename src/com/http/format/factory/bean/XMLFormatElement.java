@@ -2,7 +2,10 @@ package com.http.format.factory.bean;
 
 /**
  * 报文模板<br>
- * 模板中主要包括两个元素：报文头head、报文标签tag
+ * 一个报文模板文件包括两个报文模板，一个是发送报文模板，一个接收报文模板<br>
+ * 模板中主要包括两个元素：报文头head、报文数据标签dataTag<br>
+ * 报文头head主要包括版本号（version）、编码（encoding）;报文数据标签dataTag主要是报文的数据报文部分
+ * 
  * @Project:JDMHA
  * @file:XMLFormatElement.java
  *
@@ -15,7 +18,10 @@ package com.http.format.factory.bean;
  */
 public class XMLFormatElement {
 	
-	/** 报文模板名称  */
+	/** 
+	 * 报文模板名称 <br>
+	 * 发送报文模板名称为****Send(如：JK00001Send)；接收报文模板名称为****Receive（如：JK00001Reveive）
+	 */
 	private String name;
 	
 	/** 报文模板的头部信息，主要包括版本、编码 */
