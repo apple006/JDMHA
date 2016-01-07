@@ -3,7 +3,7 @@ package com.http;
 import javax.servlet.ServletContextEvent;
 
 /**
- * XmlFormatInit初始化xml文件的入口<br>
+ * 本地文件初始化，继承AbstractFormatInit
  * 
  * @Project:JDMHA
  * @file:XmlFormatInit.java
@@ -15,12 +15,14 @@ import javax.servlet.ServletContextEvent;
  *
  * @data:2015年12月22日
  */
-public class FileSystemXmlFormatInit extends AbStractFormatInit{
+public class FileSystemXmlFormatInit extends AbstractFormatInit{
 	
 	@Override
 	public void contextInitialized(ServletContextEvent context) {
 		super.contextInitialized(context);
 	}
 	
-	
+	public void initalizeXmlFormat(){
+		
+	}
 }

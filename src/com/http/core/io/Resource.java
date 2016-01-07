@@ -15,5 +15,5 @@ package com.http.core.io;
  * @data:2016年1月5日
  */
 public interface Resource {
-	public String getResource();
+	
 }
