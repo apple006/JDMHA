@@ -13,6 +13,6 @@ package com.http.format.factory;
  *
  * @data:2015年12月22日
  */
-public interface XmlFactory {
+public interface XmlBeanFactory {
 
 }

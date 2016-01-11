@@ -7,6 +7,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.http.format.factory.XmlBeanFactory;
+import com.http.format.factory.config.DefaultXmlBeanFactory;
 import com.http.format.factory.config.PropertiesFactory;
 
 /**
@@ -62,6 +64,18 @@ public abstract class AbstractFormatInit extends ContextLoaderListener{
 	 *
 	 */
 	public abstract void initalizeXmlFormat();
+	
+	/**
+	 * 
+	 * 
+	 * @author:chenssy
+	 * @data:2016年1月11日
+	 *
+	 * @return
+	 */
+	protected XmlBeanFactory createBeanFactory(){
+		return new DefaultXmlBeanFactory();
+	}
 
 	public static ApplicationContext getContext() {
 		return context;
