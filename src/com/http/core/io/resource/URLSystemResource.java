@@ -1,5 +1,7 @@
 package com.http.core.io.resource;
 
-public class URLSystemResource {
+import com.http.core.io.Resource;
+
+public class URLSystemResource implements Resource{
 
 }
