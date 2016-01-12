@@ -18,7 +18,7 @@ import java.util.Properties;
  *
  * @data:2016年1月6日
  */
-public class PropertiesFactory {
+public class ConfigurablePropertiesFactory {
 	/** 配置文件地址 */
 	private final static String PROPERTIES_PATH = "";
 	

@@ -7,14 +7,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.http.core.io.resource.DefaultResourceLoader;
 import com.http.format.factory.XmlBeanFactory;
 import com.http.format.factory.config.DefaultXmlBeanFactory;
-import com.http.format.factory.config.PropertiesFactory;
+import com.http.format.factory.config.ConfigurablePropertiesFactory;
 
 /**
  * 
  * xml模板初始化入口<br>
- * 
  * 
  * @Project:JDMHA
  * @file:AbStractFormatInit.java
@@ -26,10 +26,12 @@ import com.http.format.factory.config.PropertiesFactory;
  *
  * @data:2016年1月5日
  */
-public abstract class AbstractFormatInit extends ContextLoaderListener{
+public abstract class AbstractFormatInit extends DefaultResourceLoader{
 	private	final Logger logger = Logger.getLogger(AbstractFormatInit.class);
 	
 	private static ApplicationContext context;
+	
+	private ServletContextEvent contextEvent;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent context) {
@@ -39,10 +41,12 @@ public abstract class AbstractFormatInit extends ContextLoaderListener{
 			logger.debug(e.getMessage());
 		}
 		
+		//设置context
+		this.contextEvent = context;
 		setContext(WebApplicationContextUtils.getRequiredWebApplicationContext(context.getServletContext()));
 		
 		//解析properties配置文件
-		PropertiesFactory.loadProperties();
+		ConfigurablePropertiesFactory.loadProperties();
 		
 		/*
 		 * 调用初始化方法
@@ -66,7 +70,7 @@ public abstract class AbstractFormatInit extends ContextLoaderListener{
 	public abstract void initalizeXmlFormat();
 	
 	/**
-	 * 
+	 * 获取默认工厂类
 	 * 
 	 * @author:chenssy
 	 * @data:2016年1月11日
@@ -84,4 +88,9 @@ public abstract class AbstractFormatInit extends ContextLoaderListener{
 	public static void setContext(ApplicationContext ctx) {
 		context = ctx;
 	}
+
+	public ServletContextEvent getContextEvent() {
+		return contextEvent;
+	}
+	
 }
