@@ -23,6 +23,5 @@ public class UrlSystemXmlFormatInit extends AbstractFormatInit{
 
 	@Override
 	public void initalizeXmlFormat() {
-		
 	}
 }

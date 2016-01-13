@@ -35,7 +35,10 @@ public class FileSystemXmlFormatInit extends AbstractFormatInit{
 		//获取资源路径
 		String location = context.getRealPath("/") + ConfigurablePropertiesFactory.getProperties(PATH);;
 		
-		//获取资源
+		//资源定位
 		List<Resource> resources = getResources(location);
+		
+		//资源解析
+		
 	}
 }

@@ -1,9 +1,8 @@
 package com.http.format.factory.config;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  * Properties配置见工厂类<br>
@@ -20,7 +19,7 @@ import java.util.Properties;
  */
 public class ConfigurablePropertiesFactory {
 	/** 配置文件地址 */
-	private final static String PROPERTIES_PATH = "";
+	private final static String PROPERTIES_PATH = "config.app";
 	
 	private static Properties properties = null;
 	
@@ -31,14 +30,16 @@ public class ConfigurablePropertiesFactory {
 	 * @data:2016年1月6日
 	 *
 	 */
+	@SuppressWarnings("rawtypes")
 	public static void loadProperties(){
 		properties = new Properties();
-		try {
-			FileInputStream fis = new FileInputStream(new File(PROPERTIES_PATH));
-			
-			properties.load(fis);
-		} catch (IOException e) {
-			e.printStackTrace();
+		ResourceBundle bundle = ResourceBundle.getBundle(PROPERTIES_PATH);
+		Enumeration enums = bundle.getKeys();
+		Object key = null;
+		Object value = null;
+		for (; enums.hasMoreElements(); properties.put(key, value)) {
+			key = enums.nextElement();
+			value = bundle.getString(key.toString());
 		}
 	}
 	

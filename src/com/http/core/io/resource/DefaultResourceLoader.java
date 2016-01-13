@@ -20,7 +20,8 @@ public class DefaultResourceLoader extends ContextLoaderListener implements Reso
 	@Override
 	public List<Resource> getResources(String location) {
 		Assert.notNull(location, "location must be not null");
-		if(location.startsWith("/")){		// '/'开头，File System
+		if((location.indexOf("/") > 0) && 
+		   (!location.startsWith("http:") && !location.startsWith("https:"))){		// '/'开头，File System
 			return getResourcesByFileSystem(location);
 		}else{		//URL system
 			return getResourcesByUrlSystem(location);
@@ -36,9 +37,9 @@ public class DefaultResourceLoader extends ContextLoaderListener implements Reso
 	 * @return
 	 */
 	private List<Resource> getResourcesByFileSystem(String location) {
-		FileSystemResourceLoader loader = new FileSystemResourceLoader(location);
+		FileSystemResourceLoader resourceLoader = new FileSystemResourceLoader(location);
 		
-		return null;
+		return resourceLoader.getResource();
 	}
 
 	/**
