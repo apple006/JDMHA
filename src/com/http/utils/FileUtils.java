@@ -45,4 +45,19 @@ public class FileUtils {
 		}
 		return lists;
 	}
+
+	/**
+	 * 获取文件名(去掉后缀)
+	 * 
+	 * @author:chenssy
+	 * @data:2016年1月14日
+	 *
+	 * @param file
+	 * @return
+	 */
+	public static String getFileName(File file) {
+		String fileName = file.getName();
+		
+		return fileName.substring(0,fileName.indexOf("."));
+	}
 }

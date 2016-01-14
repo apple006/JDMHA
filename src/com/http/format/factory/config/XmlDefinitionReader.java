@@ -16,6 +16,7 @@ import com.http.format.factory.bean.XMLFormatElement;
 import com.http.format.factory.bean.XMLHead;
 import com.http.format.factory.bean.XmlField;
 import com.http.format.factory.bean.XmlListField;
+import com.http.utils.FileUtils;
 import com.http.utils.XmlReaderUtils;
 
 /**
@@ -66,7 +67,7 @@ public class XmlDefinitionReader {
 	private void doLoadXmlDefinition(File file) {
 		SAXReader saxReader = new SAXReader();
 		//构建XMLDefinition
-		XMLDefinition definition = new XMLDefinition(file.getName());
+		XMLDefinition definition = new XMLDefinition(FileUtils.getFileName(file));
 		try {
 			Document document = saxReader.read(file);
 			Element root = document.getRootElement();
@@ -83,11 +84,11 @@ public class XmlDefinitionReader {
 					while(eIterator.hasNext()){
 						Element eElement = eIterator.next();
 						//解析标签头
-						if(XmlReaderUtils.XML_HEAD.equalsIgnoreCase(element.getName())){
+						if(XmlReaderUtils.XML_HEAD.equalsIgnoreCase(eElement.getName())){
 							xmlElement.setXmlHead(xmlHeadReader(eElement));
 						}
 						//解析数据标签
-						else if(XmlReaderUtils.XML_DATA_TAG.equalsIgnoreCase(element.getName())){
+						else if(XmlReaderUtils.XML_DATA_TAG.equalsIgnoreCase(eElement.getName())){
 							xmlElement.setXmlDataTag(xmlDataTagReader(eElement));
 						}
 					}
@@ -100,7 +101,6 @@ public class XmlDefinitionReader {
 				}
 			}
 			//标签解析完毕，进行注册处理
-			System.out.println(definition.getXmlId());
 		} catch (DocumentException e) {
 			throw new RuntimeException(e);
 		}
@@ -118,7 +118,7 @@ public class XmlDefinitionReader {
 	@SuppressWarnings("unchecked")
 	private XMLDataTag xmlDataTagReader(Element element) {
 		XMLDataTag dataTag = new XMLDataTag(element.attributeValue("tagName"));
-		Iterator<Element> iterator = element.attributeIterator();
+		Iterator<Element> iterator = element.elementIterator();
 		Element item = null;
 		XmlField xmlField = null;
 		XmlListField xmlListField = null;
@@ -170,7 +170,7 @@ public class XmlDefinitionReader {
 				element.attributeValue(XmlReaderUtils.XML_DATA_TAG_CLASS_NAME));
 		
 		//解析子节点
-		Iterator<Element> iterator = element.attributeIterator();
+		Iterator<Element> iterator = element.elementIterator();
 		Element item = null;
 		XmlField xmlField = null;
 		while(iterator.hasNext()){

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xmlFormats>
-	<xmlFmtElement id="EC0001SendFmt">
+	<xmlFmtElement id="EC0001Send">
 		<xmlHead version="1.0" encoding="GB18030" />
 		<xmlDataTag tagName="ebank">
-			<xmlField dataName="" tagName="tellNo" classId="tellNo" />
-			<xmlField dataName="" tagName="nodeNo" classId="nodeNo" />
-			<xmlField dataName="" tagName="tranCode" classId="tranCode" />
-			<xmlField dataName="objectId" tagName="tranFlowNo" classId="flow" />
-			<xmlField dataName="" tagName="tranType" classId="tranType" />
-			<xmlField dataName="submitTime" tagName="tranDate" classId="flow" />
+			<xmlField dataName="" tagName="tellNo" className="tellNo" />
+			<xmlField dataName="" tagName="nodeNo" className="nodeNo" />
+			<xmlField dataName="" tagName="tranCode" className="tranCode" />
+			<xmlField dataName="objectId" tagName="tranFlowNo" className="flow" />
+			<xmlField dataName="" tagName="tranType" className="tranType" />
+			<xmlField dataName="submitTime" tagName="tranDate" className="flow" />
 		</xmlDataTag>
 	</xmlFmtElement>
-	<xmlFmtElement id="EC0001RecFmt">
+	<xmlFmtElement id="EC0001Receive">
 		<xmlHead version="1.0" encoding="GB18030" />
 		<xmlDataTag tagName="ebank">			
-			<xmlField dataName="" tagName="hostReturnCode" classId="ErrCode" />
-			<xmlField dataName="" tagName="hostErrorMessage" classId="ErrMsg" />
-			<xmlField dataName="" tagName="tranFlowState" classId="state" />
-			<xmlField dataName="submitTime" tagName="tranDate" classId="flow" />
-			<xmlField dataName="hostSendTime" tagName="tranDate" classId="flow" />
-			<xmlField dataName="hostFlowNo" tagName="transferFlowNo" classId="flow" />
-			<xmlField dataName="" tagName="groundSign" classId="groundSign" />
-			<xmlField dataName="" tagName="groundReason" classId="groundReason" />
+			<xmlField dataName="" tagName="hostReturnCode" className="ErrCode" />
+			<xmlField dataName="" tagName="hostErrorMessage" className="ErrMsg" />
+			<xmlField dataName="" tagName="tranFlowState" className="state" />
+			<xmlField dataName="submitTime" tagName="tranDate" className="flow" />
+			<xmlField dataName="hostSendTime" tagName="tranDate" className="flow" />
+			<xmlField dataName="hostFlowNo" tagName="transferFlowNo" className="flow" />
+			<xmlField dataName="" tagName="groundSign" className="groundSign" />
+			<xmlField dataName="" tagName="groundReason" className="groundReason" />
 		</xmlDataTag>
 	</xmlFmtElement>
 </xmlFormats>
