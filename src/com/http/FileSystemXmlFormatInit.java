@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 
+import org.apache.log4j.Logger;
+
 import com.http.core.io.Resource;
 import com.http.format.factory.config.ConfigurablePropertiesFactory;
 
@@ -22,6 +24,8 @@ import com.http.format.factory.config.ConfigurablePropertiesFactory;
  * @data:2015年12月22日
  */
 public class FileSystemXmlFormatInit extends AbstractFormatInit{
+	private	final Logger logger = Logger.getLogger(AbstractFormatInit.class);
+	
 	private final String PATH = "classPath.file.path";
 	
 	@Override
@@ -37,8 +41,11 @@ public class FileSystemXmlFormatInit extends AbstractFormatInit{
 		
 		//资源定位
 		List<Resource> resources = getResources(location);
-		
-		//资源解析
-		
+		logger.info("");
+		/*
+		 * 资源解析和注册
+		 * 由AbstractFormatInit父类来实现
+		 */
+		loadXMLBeanDefinition(resources);
 	}
 }

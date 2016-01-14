@@ -1,6 +1,10 @@
 package com.http.format.factory.config;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import com.http.format.factory.XmlBeanFactory;
+import com.http.format.factory.bean.XMLDefinition;
 
 
 /**
@@ -17,5 +21,10 @@ import com.http.format.factory.XmlBeanFactory;
  * @data:2016年1月11日
  */
 public class DefaultXmlBeanFactory implements XmlBeanFactory{
+	/**
+	 * XMLDefinition的数据池
+	 */
+	private static final Map<String, XMLDefinition> DEFINITION_MAP = new ConcurrentHashMap<>();
 
+	
 }

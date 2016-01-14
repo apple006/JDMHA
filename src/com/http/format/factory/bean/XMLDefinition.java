@@ -1,6 +1,5 @@
-package com.http.format.factory.config;
+package com.http.format.factory.bean;
 
-import com.http.format.factory.bean.XMLFormatElement;
 
 /**
  * JDMHA 报文模板容器的内部数据结构，相当于 IoC容器的BeanDefinition
@@ -24,6 +23,14 @@ public class XMLDefinition {
 	
 	/** xml 接收报文模板  */
 	private XMLFormatElement receiveFormatElement;
+	
+	public XMLDefinition(){
+		
+	}
+	
+	public XMLDefinition(String xmlId){
+		this.xmlId = xmlId;
+	}
 
 	public String getXmlId() {
 		return xmlId;

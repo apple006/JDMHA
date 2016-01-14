@@ -30,10 +30,17 @@ public class XMLDataTag {
 	/** 报文数据：集合类数据  */
 	private List<XmlListField> xmlListFields;
 	
+	private List<XMLDataTag> xmlDataTags;
+	
 	public XMLDataTag(){
-		this.name = "";
-		this.xmlFields = new ArrayList<XmlField>();
-		this.xmlListFields = new ArrayList<XmlListField>();
+		this("");
+	}
+	
+	public XMLDataTag(String name){
+		this.name = name;
+		xmlFields = new ArrayList<XmlField>();
+		xmlListFields = new ArrayList<XmlListField>();
+		xmlDataTags = new ArrayList<XMLDataTag>();
 	}
 
 	public String getName() {
@@ -58,5 +65,25 @@ public class XMLDataTag {
 
 	public void setXmlListFields(List<XmlListField> xmlListFields) {
 		this.xmlListFields = xmlListFields;
+	}
+
+	public List<XMLDataTag> getXmlDataTags() {
+		return xmlDataTags;
+	}
+
+	public void setXmlDataTags(List<XMLDataTag> xmlDataTags) {
+		this.xmlDataTags = xmlDataTags;
+	}
+
+	public void addFiled(XmlField xmlField){
+		this.xmlFields.add(xmlField);
+	}
+	
+	public void addListField(XmlListField xmlListField){
+		this.xmlListFields.add(xmlListField);
+	}
+	
+	public void addDataTags(XMLDataTag xmlDataTag){
+		this.xmlDataTags.add(xmlDataTag);
 	}
 }

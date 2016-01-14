@@ -1,5 +1,7 @@
 package com.http;
 
+import java.util.List;
+
 import javax.servlet.ServletContextEvent;
 
 import org.apache.log4j.Logger;
@@ -7,10 +9,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.http.core.io.Resource;
 import com.http.core.io.resource.DefaultResourceLoader;
 import com.http.format.factory.XmlBeanFactory;
+import com.http.format.factory.bean.XMLDefinition;
 import com.http.format.factory.config.DefaultXmlBeanFactory;
 import com.http.format.factory.config.ConfigurablePropertiesFactory;
+import com.http.format.factory.config.XmlDefinitionReader;
+import com.http.utils.Assert;
 
 /**
  * 
@@ -68,6 +74,24 @@ public abstract class AbstractFormatInit extends DefaultResourceLoader{
 	 *
 	 */
 	public abstract void initalizeXmlFormat();
+	
+	/**
+	 * 资源解析和注册<br>
+	 * 资源解析：使用SAX来完成对xml的解析，将其中元素封装为XMLDefinition<br>
+	 * 注册：
+	 * @author:chenssy
+	 * @data:2016年1月13日
+	 *
+	 * @param resources
+	 */
+	public void loadXMLBeanDefinition(List<Resource> resources){
+		Assert.notNull(resources, "Resources must not be null");
+		XmlDefinitionReader reader = new XmlDefinitionReader();
+		//迭代Resource资源
+		for(Resource resource : resources){
+			reader.loadxmlDefinition(resource);
+		}
+	}
 	
 	/**
 	 * 获取默认工厂类
