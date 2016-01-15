@@ -1,4 +1,4 @@
-package com.http.format.factory.config;
+package com.http.beans.factory.config;
 
 import java.util.Enumeration;
 import java.util.Properties;

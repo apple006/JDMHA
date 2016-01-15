@@ -7,8 +7,8 @@ import javax.servlet.ServletContextEvent;
 
 import org.apache.log4j.Logger;
 
+import com.http.beans.factory.config.ConfigurablePropertiesFactory;
 import com.http.core.io.Resource;
-import com.http.format.factory.config.ConfigurablePropertiesFactory;
 
 /**
  * 本地文件初始化，继承AbstractFormatInit

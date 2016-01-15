@@ -1,6 +1,7 @@
-package com.http.format.factory.config;
+package com.http.beans.factory.config;
 
-import com.http.format.factory.bean.XMLDefinition;
+import com.http.beans.factory.bean.XMLDefinition;
+import com.http.beans.factory.support.DefaultXmlBeanFactory;
 
 /**
  *  

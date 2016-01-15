@@ -1,13 +1,7 @@
-package com.http.format.factory.exception;
+package com.http.beans.factory.exception;
 
 @SuppressWarnings("serial")
 public class XmlDefinitionException extends RuntimeException{
-	private String fileName;
-	
-	private String xmlId;
-	
-	private String exceptionDescription;
-	
 	public XmlDefinitionException(String msg){
 		super();
 	}

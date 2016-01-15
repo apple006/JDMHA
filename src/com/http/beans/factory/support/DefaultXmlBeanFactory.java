@@ -1,13 +1,11 @@
-package com.http.format.factory.config;
+package com.http.beans.factory.support;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
-
-import com.http.format.factory.XmlBeanFactory;
-import com.http.format.factory.bean.XMLDefinition;
-import com.http.format.factory.exception.XmlDefinitionException;
+import com.http.beans.factory.XmlBeanFactory;
+import com.http.beans.factory.bean.XMLDefinition;
+import com.http.beans.factory.exception.XmlDefinitionException;
 import com.http.utils.Assert;
 
 
@@ -25,15 +23,11 @@ import com.http.utils.Assert;
  * @data:2016年1月11日
  */
 public class DefaultXmlBeanFactory implements XmlBeanFactory{
-	
-	private final Logger logger = Logger.getLogger(DefaultXmlBeanFactory.class);
-	
 	/**
 	 * XMLDefinition的数据池
 	 */
 	private final Map<String, XMLDefinition> DEFINITION_MAP = new ConcurrentHashMap<>();
 
-	
 	private static DefaultXmlBeanFactory factory = null;
 	
 	/** 私有构造器 */

@@ -6,16 +6,12 @@ import javax.servlet.ServletContextEvent;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.http.beans.factory.config.ConfigurablePropertiesFactory;
+import com.http.beans.factory.support.XmlDefinitionReader;
 import com.http.core.io.Resource;
 import com.http.core.io.resource.DefaultResourceLoader;
-import com.http.format.factory.XmlBeanFactory;
-import com.http.format.factory.bean.XMLDefinition;
-import com.http.format.factory.config.DefaultXmlBeanFactory;
-import com.http.format.factory.config.ConfigurablePropertiesFactory;
-import com.http.format.factory.config.XmlDefinitionReader;
 import com.http.utils.Assert;
 
 /**
