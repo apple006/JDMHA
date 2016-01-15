@@ -92,18 +92,6 @@ public abstract class AbstractFormatInit extends DefaultResourceLoader{
 			reader.loadxmlDefinition(resource);
 		}
 	}
-	
-	/**
-	 * 获取默认工厂类
-	 * 
-	 * @author:chenssy
-	 * @data:2016年1月11日
-	 *
-	 * @return
-	 */
-	protected XmlBeanFactory createBeanFactory(){
-		return new DefaultXmlBeanFactory();
-	}
 
 	public static ApplicationContext getContext() {
 		return context;

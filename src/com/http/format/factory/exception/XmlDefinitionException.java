@@ -8,11 +8,11 @@ public class XmlDefinitionException extends RuntimeException{
 	
 	private String exceptionDescription;
 	
-	XmlDefinitionException(String msg){
+	public XmlDefinitionException(String msg){
 		super();
 	}
 	
-	XmlDefinitionException(String msg,Throwable ex){
+	public XmlDefinitionException(String msg,Throwable ex){
 		super(msg, ex);
 	}
 	

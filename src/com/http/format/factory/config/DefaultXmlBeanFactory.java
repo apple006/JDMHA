@@ -3,8 +3,12 @@ package com.http.format.factory.config;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.log4j.Logger;
+
 import com.http.format.factory.XmlBeanFactory;
 import com.http.format.factory.bean.XMLDefinition;
+import com.http.format.factory.exception.XmlDefinitionException;
+import com.http.utils.Assert;
 
 
 /**
@@ -21,10 +25,71 @@ import com.http.format.factory.bean.XMLDefinition;
  * @data:2016年1月11日
  */
 public class DefaultXmlBeanFactory implements XmlBeanFactory{
+	
+	private final Logger logger = Logger.getLogger(DefaultXmlBeanFactory.class);
+	
 	/**
 	 * XMLDefinition的数据池
 	 */
-	private static final Map<String, XMLDefinition> DEFINITION_MAP = new ConcurrentHashMap<>();
+	private final Map<String, XMLDefinition> DEFINITION_MAP = new ConcurrentHashMap<>();
 
 	
+	private static DefaultXmlBeanFactory factory = null;
+	
+	/** 私有构造器 */
+	private DefaultXmlBeanFactory(){
+		
+	}
+	
+	public static DefaultXmlBeanFactory getInstance(){
+		if(factory == null){
+			synchronized (DefaultXmlBeanFactory.class) {
+				factory = new DefaultXmlBeanFactory();
+			}
+		}
+		
+		return factory;
+	}
+	
+	/**
+	 * 注册Definition
+	 * 
+	 * @author:chenssy
+	 * @data:2016年1月15日
+	 *
+	 * @param definition
+	 */
+	public void registerXmlDefinition(XMLDefinition definition){
+		Assert.notNull(definition, "xmlDefinition must not be null");
+		Assert.notNull(definition.getXmlId(), "xml id must not be null");
+		
+		/*
+		 *判断该bean是否已经存在了
+		 */
+		XMLDefinition oldDefinition = DEFINITION_MAP.get(definition.getXmlId());
+		if(oldDefinition != null){
+			throw new XmlDefinitionException(definition.getXmlId() + "已经存在了");
+		}else{
+			this.DEFINITION_MAP.put(definition.getXmlId(), definition);
+		}
+	}
+	
+	/**
+	 * 取出Definition
+	 * 
+	 * @author:chenssy
+	 * @data:2016年1月15日
+	 *
+	 * @param definitionName
+	 */
+	public XMLDefinition getXmlDefinition(String definitionName){
+		Assert.notNull(definitionName, "definitionName must not be null");
+		XMLDefinition definition = this.DEFINITION_MAP.get(definitionName);
+		
+		if(definition == null){
+			throw new XmlDefinitionException(definitionName + "not be found");
+		}
+		
+		return definition;
+	}
 }

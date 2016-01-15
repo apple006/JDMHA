@@ -101,6 +101,7 @@ public class XmlDefinitionReader {
 				}
 			}
 			//标签解析完毕，进行注册处理
+			
 		} catch (DocumentException e) {
 			throw new RuntimeException(e);
 		}
