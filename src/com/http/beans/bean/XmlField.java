@@ -1,4 +1,4 @@
-package com.http.beans.factory.bean;
+package com.http.beans.bean;
 
 /**
  * xml报文模板的基本数据

@@ -3,9 +3,9 @@ package com.http.beans.factory.support;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.http.beans.bean.XMLDefinition;
+import com.http.beans.exception.XmlDefinitionException;
 import com.http.beans.factory.XmlBeanFactory;
-import com.http.beans.factory.bean.XMLDefinition;
-import com.http.beans.factory.exception.XmlDefinitionException;
 import com.http.utils.Assert;
 
 
@@ -45,14 +45,6 @@ public class DefaultXmlBeanFactory implements XmlBeanFactory{
 		return factory;
 	}
 	
-	/**
-	 * 注册Definition
-	 * 
-	 * @author:chenssy
-	 * @data:2016年1月15日
-	 *
-	 * @param definition
-	 */
 	public void registerXmlDefinition(XMLDefinition definition){
 		Assert.notNull(definition, "xmlDefinition must not be null");
 		Assert.notNull(definition.getXmlId(), "xml id must not be null");
@@ -68,14 +60,6 @@ public class DefaultXmlBeanFactory implements XmlBeanFactory{
 		}
 	}
 	
-	/**
-	 * 取出Definition
-	 * 
-	 * @author:chenssy
-	 * @data:2016年1月15日
-	 *
-	 * @param definitionName
-	 */
 	public XMLDefinition getXmlDefinition(String definitionName){
 		Assert.notNull(definitionName, "definitionName must not be null");
 		XMLDefinition definition = this.DEFINITION_MAP.get(definitionName);

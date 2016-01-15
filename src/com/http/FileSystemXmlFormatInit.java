@@ -7,7 +7,7 @@ import javax.servlet.ServletContextEvent;
 
 import org.apache.log4j.Logger;
 
-import com.http.beans.factory.config.ConfigurablePropertiesFactory;
+import com.http.beans.config.ConfigurablePropertiesFactory;
 import com.http.core.io.Resource;
 
 /**

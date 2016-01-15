@@ -1,4 +1,4 @@
-package com.http.beans.factory.bean;
+package com.http.beans.bean;
 
 import java.util.ArrayList;
 import java.util.List;

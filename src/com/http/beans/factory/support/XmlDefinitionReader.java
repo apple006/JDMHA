@@ -9,18 +9,18 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import com.http.beans.factory.bean.XMLDataTag;
-import com.http.beans.factory.bean.XMLDefinition;
-import com.http.beans.factory.bean.XMLFormatElement;
-import com.http.beans.factory.bean.XMLHead;
-import com.http.beans.factory.bean.XmlField;
-import com.http.beans.factory.bean.XmlListField;
+import com.http.beans.bean.XMLDataTag;
+import com.http.beans.bean.XMLDefinition;
+import com.http.beans.bean.XMLFormatElement;
+import com.http.beans.bean.XMLHead;
+import com.http.beans.bean.XmlField;
+import com.http.beans.bean.XmlListField;
 import com.http.core.io.Resource;
 import com.http.utils.FileUtils;
 import com.http.utils.XmlReaderUtils;
 
 /**
- * xml解析器；负责xml 模板文件的解析工作，将xml统一封装成XMLBeanDefinition
+ * xml模板文件解析器；负责xml 模板文件的解析工作，将xml统一封装成XMLBeanDefinition
  * 
  * @Project:JDMHA
  * @file:ConfigurableXmlReader.java

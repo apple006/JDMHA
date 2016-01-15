@@ -1,4 +1,4 @@
-package com.http.beans.factory.bean;
+package com.http.beans.bean;
 
 /**
  * 报文模板头部信息

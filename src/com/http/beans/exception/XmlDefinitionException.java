@@ -1,4 +1,4 @@
-package com.http.beans.factory.exception;
+package com.http.beans.exception;
 
 @SuppressWarnings("serial")
 public class XmlDefinitionException extends RuntimeException{
