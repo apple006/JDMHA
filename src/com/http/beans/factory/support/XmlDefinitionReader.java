@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -34,7 +35,7 @@ import com.http.utils.XmlReaderUtils;
  * @data:2016年1月13日
  */
 public class XmlDefinitionReader {
-	
+	private final Logger logger = Logger.getLogger(XmlDefinitionReader.class);
 	/**
 	 * 
 	 * 加载Resource，解析xml模板文件
@@ -66,6 +67,7 @@ public class XmlDefinitionReader {
 	 */
 	@SuppressWarnings("unchecked")
 	private void doLoadXmlDefinition(File file) {
+		logger.info("【JDMHC】---load xml:[" + FileUtils.getFileName(file) + "] beginning...");
 		SAXReader saxReader = new SAXReader();
 		//构建XMLDefinition
 		XMLDefinition definition = new XMLDefinition(FileUtils.getFileName(file));
@@ -103,6 +105,7 @@ public class XmlDefinitionReader {
 			}
 			//标签解析完毕，进行注册处理
 			ConfigurableDefaultXmlBeanFactory.registerXmlDefinition(definition);
+			logger.info("【JDMHC】---load xml:[" + FileUtils.getFileName(file) + "] complete...");
 		} catch (DocumentException e) {
 			throw new RuntimeException(e);
 		}

@@ -41,11 +41,12 @@ public class FileSystemXmlFormatInit extends AbstractFormatInit{
 		
 		//资源定位
 		List<Resource> resources = getResources(location);
-		logger.info("");
+		logger.info("【JDMHC】---load xmlBeanDefinition beginning...");
 		/*
 		 * 资源解析和注册
 		 * 由AbstractFormatInit父类来实现
 		 */
 		loadXMLBeanDefinition(resources);
+		logger.info("【JDMHC】---load xmlBeanDefinition complete...");
 	}
 }

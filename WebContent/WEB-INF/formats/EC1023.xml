@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xmlFormats>
+	<xmlFmtElement id="EC1023SendFmt">
+		<xmlHead version="1.0" encoding="GB18030" />
+		<xmlDataTag tagName="ebank">
+		    <xmlField dataName="" tagName="tellNo" className="tellNo" />
+			<xmlField dataName="" tagName="nodeNo" className="nodeNo" />
+			<xmlField dataName="" tagName="tranCode" className="tranCode" />
+			<xmlField dataName="" tagName="inrttp" className="inrttp" />
+			<xmlField dataName="" tagName="currencyType" className="crcycd" />
+			<xmlField dataName="" tagName="termcd" className="termcd" />
+		</xmlDataTag>
+	</xmlFmtElement>
+	<xmlFmtElement id="EC1023RecFmt">
+		<xmlHead version="1.0" encoding="GB18030" />
+		<xmlDataTag tagName="ebank">	
+		    <xmlField dataName="" tagName="hostReturnCode" className="ErrCode" />
+			<xmlField dataName="" tagName="hostErrorMessage" className="ErrMsg" />
+			<xmlField dataName="" tagName="turnPageTotalNum" className="totalNum" />			
+			<xmlField dataName="" tagName="listnm" className="listnm" />
+			<xmltag tagName="list">
+				<xmlList className="subList" tagName="row">
+					<xmlField dataName="inrttp" tagName="inrttp" className="interRateVO" />
+					<xmlField dataName="termcd" tagName="termcd" className="interRateVO" />
+					<xmlField dataName="efctdt" tagName="efctdt" className="interRateVO" />
+					<xmlField dataName="inrtst" tagName="interestRate" className="interRateVO" />
+				</xmlList>
+			</xmltag>
+		</xmlDataTag>
+	</xmlFmtElement>
+</xmlFormats>
