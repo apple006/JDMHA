@@ -16,7 +16,7 @@ package com.http.utils;
 public class Assert {
 	
 	/**
-	 * 判断object是否为null,为null则抛出IllegalArgumentException异常
+	 * 判断object是否为null,为null则抛出IllegalArgumentException异常(抛出的异常表明向方法传递了一个不合法或不正确的参)
 	 * 
 	 * @author:chenssy
 	 * @data:2016年1月12日

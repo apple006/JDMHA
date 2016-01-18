@@ -3,6 +3,19 @@ package com.http.beans.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 模板文件的集合列数据<br>
+ * 一个XmlListField包含多个xmlFields、xmlListFields
+ * @Project:JDMHA
+ * @file:XmlListField.java
+ *
+ * @Author:chenssy
+ * @email:chenssy995812509@163.com
+ * @url : <a href="http://cmsblogs.com">http://cmsblogs.com</a>
+ * @qq : 122448894
+ *
+ * @data:2016年1月15日
+ */
 public class XmlListField {
 	private String tagName;
 	

@@ -15,6 +15,7 @@ import com.http.beans.bean.XMLFormatElement;
 import com.http.beans.bean.XMLHead;
 import com.http.beans.bean.XmlField;
 import com.http.beans.bean.XmlListField;
+import com.http.beans.factory.config.ConfigurableDefaultXmlBeanFactory;
 import com.http.core.io.Resource;
 import com.http.utils.FileUtils;
 import com.http.utils.XmlReaderUtils;
@@ -101,7 +102,7 @@ public class XmlDefinitionReader {
 				}
 			}
 			//标签解析完毕，进行注册处理
-			
+			ConfigurableDefaultXmlBeanFactory.registerXmlDefinition(definition);
 		} catch (DocumentException e) {
 			throw new RuntimeException(e);
 		}
@@ -205,4 +206,5 @@ public class XmlDefinitionReader {
 		
 		return xmlField;
 	}
+	
 }

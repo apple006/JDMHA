@@ -1,7 +1,7 @@
 package com.http.beans.bean;
 
 /**
- * 报文模板头部信息
+ * 报文模板头部信息;包括版本号和编码
  * 
  * @Project:JDMHA
  * @file:XMLHead.java

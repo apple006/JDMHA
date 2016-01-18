@@ -1,8 +1,10 @@
 package com.http.beans.bean;
 
 /**
- * xml报文模板的基本数据
- * 
+ * xml报文模板的基本数据列，为一个原子的xml标签域<br>
+ * dataName：表示获取对象的方法<br>
+ * tagName：对应xml模板的tag<br>
+ * className：参数的key值(hashmap)<br>
  * @Project:JDMHA
  * @file:XmlField.java
  *

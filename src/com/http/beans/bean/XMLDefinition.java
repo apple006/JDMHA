@@ -2,7 +2,8 @@ package com.http.beans.bean;
 
 
 /**
- * JDMHA 报文模板容器的内部数据结构，相当于 IoC容器的BeanDefinition
+ * JDMHA 报文模板容器的内部数据结构，相当于 IoC容器的BeanDefinition<br>
+ * 主要包括模板文件的ID、发送报文模板(***Send)、接收报文模板(***Receive )
  * 
  * @Project:JDMHA
  * @file:XMLDefinition.java
