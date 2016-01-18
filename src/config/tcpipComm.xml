@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<!-- 报文格式化服务 -->
+	<bean id="TCPIPXMLFormatService" class="com.netbank.format.service.impl.XMLFormatServiceImpl">
+	</bean>
+	
+	<!-- 报文处理器服务 -->
+	<bean id="TCPIPCommProcessor" class="com.netbank.core.comm.tcpip.TCPIPCommProcessor">
+		<property name="lengthHeadLen">
+		     <value>6</value>
+		</property>
+	</bean>
+	<!-- 连接某个TCPIP服务器服务 -->
+	<bean id="ConnectToHostService" class="com.netbank.core.comm.tcpip.service.impl.ConnectToHostServiceImpl" >
+		<property name="port">
+			<value>5300</value>
+		</property>
+		<property name="maxConnection">
+		     <value>50</value>
+		</property>
+		<property name="hostAddr">
+		   <value>172.20.68.3</value>
+		</property>
+		<property name="keepAlive">
+		     <value>false</value>
+		</property>
+		<property name="commProcessor">
+		    <ref local="TCPIPCommProcessor"/>
+		</property>
+	</bean>
+</beans>

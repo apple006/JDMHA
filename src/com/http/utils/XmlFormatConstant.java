@@ -13,7 +13,7 @@ package com.http.utils;
  *
  * @data:2016年1月14日
  */
-public class XmlReaderUtils {
+public class XmlFormatConstant {
 	/**
 	 * 报文模板
 	 */
@@ -41,4 +41,9 @@ public class XmlReaderUtils {
 	public static final String XML_DATA_TAG_TAG_NAME = "tagName";
 	
 	public static final String XML_DATA_TAG_CLASS_NAME = "className";
+	
+	/** 发送 */
+	public static final String XML_FORMAT_TYPE_SEND = "Send";
+	/** 接收 */
+	public static final String XML_FORMAT_TYPE_RECEIVE = "Receive";
 }

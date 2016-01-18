@@ -6,9 +6,9 @@
 			<xmlField dataName="" tagName="tellNo" className="tellNo" />
 			<xmlField dataName="" tagName="nodeNo" className="nodeNo" />
 			<xmlField dataName="" tagName="tranCode" className="tranCode" />
-			<xmlField dataName="objectId" tagName="tranFlowNo" className="flow" />
+			<xmlField dataName="" tagName="tranFlowNo" className="objectId" />
 			<xmlField dataName="" tagName="tranType" className="tranType" />
-			<xmlField dataName="submitTime" tagName="tranDate" className="flow" />
+			<xmlField dataName="" tagName="tranDate" className="submitTime" />
 		</xmlDataTag>
 	</xmlFmtElement>
 	<xmlFmtElement id="EC0001Receive">

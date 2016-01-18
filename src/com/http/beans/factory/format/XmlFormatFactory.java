@@ -42,7 +42,7 @@ public class XmlFormatFactory {
 	
 	public String buildXmlFormFormat(Map<String, Object> params,String definitionName){
 		//获取发送模板文件
-		XMLFormatElement element = ConfigurableDefaultXmlBeanFactory.getXmlFormatElement(definitionName + "Send");
+		XMLFormatElement element = ConfigurableDefaultXmlBeanFactory.getXmlFormatElement(definitionName ,"Send");
 		//创建Document文档
 		Document document = DocumentHelper.createDocument();
 		//设置文档编码

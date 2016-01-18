@@ -3,8 +3,11 @@ package com.http.beans.factory.config;
 import com.http.beans.bean.XMLDefinition;
 import com.http.beans.bean.XMLFormatElement;
 import com.http.beans.factory.support.DefaultXmlBeanFactory;
+import com.http.utils.Assert;
+import com.http.utils.XmlFormatConstant;
 
 /**
+ *  DefaultXmlBeanFactory的调度工厂
  *  
  * @Project:JDMHA
  * @file:ConfigurableDefaultXmlBeanFactory.java
@@ -49,11 +52,15 @@ public class ConfigurableDefaultXmlBeanFactory {
 	 * @author:chenssy
 	 * @data:2016年1月15日
 	 *
-	 * @param definitionName
+	 * @param definitionName	xml名称
+	 * @param type	查询的类型。发送模板：send，接收模板：Receive
 	 * @return
 	 */
-	public static XMLFormatElement getXmlFormatElement(String definitionName){
-		if(definitionName.endsWith("Send")){
+	public static XMLFormatElement getXmlFormatElement(String definitionName,String type){
+		Assert.notNull(definitionName, "definitionName must not be null");
+		Assert.notNull(type, "type must not be null");
+		
+		if(XmlFormatConstant.XML_FORMAT_TYPE_SEND.endsWith(type)){
 			return getXmlDefinition(definitionName).getSentFormatElement();
 		}else{
 			return getXmlDefinition(definitionName).getReceiveFormatElement();
