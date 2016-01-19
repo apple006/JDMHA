@@ -2,18 +2,18 @@
 <xmlFormats>
 	<xmlFmtElement id="EC0001Send">
 		<xmlHead version="1.0" encoding="GB18030" />
-		<xmlDataTag tagName="ebank">
+		<xmlTag tagName="ebank">
 			<xmlField dataName="" tagName="tellNo" className="tellNo" />
 			<xmlField dataName="" tagName="nodeNo" className="nodeNo" />
 			<xmlField dataName="" tagName="tranCode" className="tranCode" />
 			<xmlField dataName="" tagName="tranFlowNo" className="objectId" />
 			<xmlField dataName="" tagName="tranType" className="tranType" />
 			<xmlField dataName="" tagName="tranDate" className="submitTime" />
-		</xmlDataTag>
+		</xmlTag>
 	</xmlFmtElement>
 	<xmlFmtElement id="EC0001Receive">
 		<xmlHead version="1.0" encoding="GB18030" />
-		<xmlDataTag tagName="ebank">			
+		<xmlTag tagName="ebank">			
 			<xmlField dataName="" tagName="hostReturnCode" className="ErrCode" />
 			<xmlField dataName="" tagName="hostErrorMessage" className="ErrMsg" />
 			<xmlField dataName="" tagName="tranFlowState" className="state" />
@@ -22,6 +22,6 @@
 			<xmlField dataName="hostFlowNo" tagName="transferFlowNo" className="flow" />
 			<xmlField dataName="" tagName="groundSign" className="groundSign" />
 			<xmlField dataName="" tagName="groundReason" className="groundReason" />
-		</xmlDataTag>
+		</xmlTag>
 	</xmlFmtElement>
 </xmlFormats>

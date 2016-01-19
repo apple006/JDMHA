@@ -63,7 +63,9 @@ public class XmlFormatFactory {
 	/**
 	 * 解析数据标签，依照数据标签和参数构建xml<br>
 	 * 因为XMLDataTag标签已经在解析XMLDataTag之间创建，所以解析时只需要解析XMLDataTag下面的节点即可<br>
-	 * 在数据标签中主要有两类标签：基本数据列XMLField、集合数据列XMLListField。所以先解析XMLField然后在解析XMLListField
+	 * 在数据标签中主要有两类标签：基本数据列XMLField、集合数据列XMLListField。所以先解析XMLField然后在解析XMLListField<br>
+	 * 对于基本数据列而言，其解析过程较为简单；但是对于集合数据列而言就稍微复杂些。集合数据列一般都是由第二层的xmlDataTag包裹着，
+	 * 其标签为XMLList，所以在解析过程中需要先获取第二层的XmlDataTag
 	 * @author:chenssy
 	 * @data:2016年1月15日
 	 *
@@ -79,10 +81,50 @@ public class XmlFormatFactory {
 		formatXmlField(xmlFields,root,params);
 		
 		//解析数据标签下所有的xmlListField标签
-		List<XmlListField> xmlListFields = dataTag.getXmlListFields();
-		formatXmlListFields(xmlListFields,root,params);
+		//xmlListField是包含在第二层的xmlDataTag里面的
+		List<XMLDataTag> dataTags = dataTag.getXmlDataTags();
+		formatXmlDataTags(dataTags,root,params);
 	}
 	
+	/**
+	 * 解析数据标签里面
+	 * @author:chenssy
+	 * @data:2016年1月19日
+	 *
+	 * @param dataTags
+	 * @param root
+	 * @param params
+	 */
+	@SuppressWarnings("unchecked")
+	private void formatXmlDataTags(List<XMLDataTag> dataTags, Element root,
+			Map<String, Object> params) {
+		String tagName = null;		//标签名
+		Element tagItem = null;		//标签
+		List<XmlField> xmlFields = null;	//基本数据列
+		List<XmlListField> xmlListFields = null;	//集合数据列
+		List<XMLDataTag> xmlDataTags = null;		//数据标签
+		List<Map<String, Object>> list = null;	//集合数据列的数据集
+		for(XMLDataTag dataTag : dataTags){
+			tagName = dataTag.getName();
+			tagItem = root.addElement(tagName);
+			
+			//构建基本数据列
+			xmlFields = dataTag.getXmlFields();
+			formatXmlField(xmlFields, tagItem, params);
+			
+			//构建集合数据列
+			xmlListFields = dataTag.getXmlListFields();
+			for(XmlListField xmlListField : xmlListFields){
+				list = (List<Map<String, Object>>) params.get(xmlListField.getClassName());
+				formatXmlListField(xmlListField, tagItem, list);
+			}
+			
+			//构建数据标签
+			xmlDataTags = dataTag.getXmlDataTags();
+			formatXmlDataTags(xmlDataTags,tagItem,params);
+		}
+	}
+
 	/**
 	 * 解析数据标签下的xmlField标签
 	 * @author:chenssy

@@ -1,11 +1,15 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.VO.Classes;
+import com.example.VO.Student;
 import com.http.beans.factory.format.XmlFormatFactory;
 
 @Controller
@@ -14,6 +18,44 @@ public class FormatTestController{
 
 	@RequestMapping(value="formatTest")
 	public void formatTest(){
+		//测试EC0001
+//		formatTestEC0001();
+		
+		//测试EC1023
+		formatTestEC1023();
+		
+	}
+
+	private void formatTestEC1023() {
+		XmlFormatFactory factory = new XmlFormatFactory();
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("tellNo", "90001");
+		params.put("nodeNo", "#9001$");
+		params.put("tranCode", "EC1023");
+		
+		Classes classes = new Classes("201601191234", "网络工程001");
+		params.put("classes", classes);
+		
+		List<Map<String, Student>> studentes = new ArrayList<Map<String, Student>>();
+		for(int i = 1 ;i <= 5 ; i++){
+			Student student = new Student();
+			student.setStudentId("201601190000" + i);
+			student.setStudentName("chenssy_"+i);
+			student.setStudentSex(i % 2 == 0 ? "1" : "2");
+			student.setStudentBirthday("2016011" + i);
+			Map<String, Student> map = new HashMap<>();
+			map.put("student", student);
+			studentes.add(map);
+		}
+		
+		params.put("studentes", studentes);
+		
+		String xml = factory.buildXmlFormFormat(params, "EC1023");
+		System.out.println(xml);
+	}
+
+	private void formatTestEC0001() {
 		XmlFormatFactory factory = new XmlFormatFactory();
 		
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -26,7 +68,6 @@ public class FormatTestController{
 		
 		String xml = factory.buildXmlFormFormat(params, "EC0001");
 		System.out.println(xml);
-		
 	}
 
 }

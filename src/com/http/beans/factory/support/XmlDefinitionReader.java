@@ -125,18 +125,16 @@ public class XmlDefinitionReader {
 		XMLDataTag dataTag = new XMLDataTag(element.attributeValue("tagName"));
 		Iterator<Element> iterator = element.elementIterator();
 		Element item = null;
-		XmlField xmlField = null;
-		XmlListField xmlListField = null;
 		while(iterator.hasNext()){
 			item = iterator.next();
 			if(XmlFormatConstant.XML_DATA_TAG_XMLFIELD.equalsIgnoreCase(item.getName())){
-				dataTag.addFiled(xmlFieldReader(item,xmlField));
+				dataTag.addFiled(xmlFieldReader(item));
 			}
 			else if(XmlFormatConstant.XML_DATA_TAG.equalsIgnoreCase(item.getName())){
-				dataTag.addDataTags(xmlDataTagReader(element));
+				dataTag.addDataTags(xmlDataTagReader(item));
 			}
 			else if(XmlFormatConstant.XML_DATA_TAG_LIST.equalsIgnoreCase(item.getName())){
-				dataTag.addListField(xmlListFieldReader(item,xmlListField));
+				dataTag.addListField(xmlListFieldReader(item));
 			}
 		}
 		
@@ -169,22 +167,21 @@ public class XmlDefinitionReader {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	private XmlListField xmlListFieldReader(Element element,XmlListField xmlListField) {
-		xmlListField = new XmlListField(
+	private XmlListField xmlListFieldReader(Element element) {
+		XmlListField xmlListField = new XmlListField(
 				element.attributeValue(XmlFormatConstant.XML_DATA_TAG_TAG_NAME),
 				element.attributeValue(XmlFormatConstant.XML_DATA_TAG_CLASS_NAME));
 		
 		//解析子节点
 		Iterator<Element> iterator = element.elementIterator();
 		Element item = null;
-		XmlField xmlField = null;
 		while(iterator.hasNext()){
 			item = iterator.next();
 			if(XmlFormatConstant.XML_DATA_TAG_XMLFIELD.equalsIgnoreCase(item.getName())){
-				xmlListField.addField(xmlFieldReader(item, xmlField));
+				xmlListField.addField(xmlFieldReader(item));
 			}
 			else if(XmlFormatConstant.XML_DATA_TAG_LIST.equalsIgnoreCase(item.getName())){
-				xmlListField.addXmlListField(xmlListFieldReader(item, xmlListField));
+				xmlListField.addXmlListField(xmlListFieldReader(item));
 			}
 		}
 		
@@ -201,8 +198,8 @@ public class XmlDefinitionReader {
 	 * @param xmlField
 	 * @return
 	 */
-	private XmlField xmlFieldReader(Element item,XmlField xmlField){
-		xmlField = new XmlField();
+	private XmlField xmlFieldReader(Element item ){
+		XmlField xmlField = new XmlField();
 		xmlField.setClassName(item.attributeValue(XmlFormatConstant.XML_DATA_TAG_CLASS_NAME));
 		xmlField.setDataName(item.attributeValue(XmlFormatConstant.XML_DATA_TAG_DATA_NAME));
 		xmlField.setTagName(item.attributeValue(XmlFormatConstant.XML_DATA_TAG_TAG_NAME));
