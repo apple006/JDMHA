@@ -40,7 +40,22 @@ import com.http.utils.XmlFormatUtils;
 public class XmlFormatFactory {
 	private Logger logger = Logger.getLogger(XmlFormatFactory.class);
 	
-	public String buildXmlFormFormat(Map<String, Object> params,String definitionName){
+	private static XmlFormatFactory formatFactory;
+	
+	private XmlFormatFactory(){
+	}
+	
+	public static XmlFormatFactory getInstance(){
+		if(formatFactory == null){
+			synchronized (XmlFormatFactory.class) {
+				formatFactory = new XmlFormatFactory();
+			}
+		}
+		
+		return formatFactory;
+	}
+	
+	public Document buildXmlFormFormat(Map<String, Object> params,String definitionName){
 		//获取发送模板文件
 		XMLFormatElement element = ConfigurableDefaultXmlBeanFactory.getXmlFormatElement(definitionName ,"Send");
 		//创建Document文档
@@ -57,7 +72,7 @@ public class XmlFormatFactory {
 		//解析数据标签，根据传入的参数params和相应的模板构建xml
 		buildXmlDataTagFormat(dataTag,params,root);
 		
-		return document.asXML();
+		return document;
 	}
 
 	/**

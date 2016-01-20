@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.VO.Classes;
 import com.example.VO.Student;
-import com.http.beans.factory.format.XmlFormatFactory;
+import com.http.beans.factory.config.ConfigurableXmlFormatFactory;
 
 @Controller
 @RequestMapping(value="test")
@@ -19,16 +19,13 @@ public class FormatTestController{
 	@RequestMapping(value="formatTest")
 	public void formatTest(){
 		//测试EC0001
-//		formatTestEC0001();
+		formatTestEC0001();
 		
 		//测试EC1023
 		formatTestEC1023();
-		
 	}
 
 	private void formatTestEC1023() {
-		XmlFormatFactory factory = new XmlFormatFactory();
-		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("tellNo", "90001");
 		params.put("nodeNo", "#9001$");
@@ -51,13 +48,10 @@ public class FormatTestController{
 		
 		params.put("studentes", studentes);
 		
-		String xml = factory.buildXmlFormFormat(params, "EC1023");
-		System.out.println(xml);
+		System.out.println(ConfigurableXmlFormatFactory.buildXmlStringFormFormat(params, "EC1023"));
 	}
 
 	private void formatTestEC0001() {
-		XmlFormatFactory factory = new XmlFormatFactory();
-		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("tellNo", "90001");
 		params.put("nodeNo", "#9001$");
@@ -66,8 +60,7 @@ public class FormatTestController{
 		params.put("tranType",1);
 		params.put("submitTime", "2016018171454");
 		
-		String xml = factory.buildXmlFormFormat(params, "EC0001");
-		System.out.println(xml);
+		System.out.println(ConfigurableXmlFormatFactory.buildXmlStringFormFormat(params, "EC0001"));
 	}
 
 }
